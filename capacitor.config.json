@@ -1,0 +1,9 @@
+{
+  "appId": "com.dswd.validkiosk",
+  "appName": "VALID Kiosk",
+  "webDir": "dist",
+  "server": {
+    "cleartext": true,
+    "androidScheme": "http"
+  }
+}
