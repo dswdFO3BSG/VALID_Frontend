@@ -29,7 +29,7 @@ const logout = async () => {
     Cookies.remove('token');
     Cookies.remove('empNo');
     Cookies.remove('name');
-    window.location.replace('/');
+    window.location.replace('/login');
 };
 </script>
 

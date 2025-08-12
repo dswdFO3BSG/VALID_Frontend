@@ -12,7 +12,7 @@ export default class AuthServices {
 
     static async logout(params) {
         try {
-            const response = await authAxiosInstance.post('logout', params);
+            const response = await authAxiosInstance.post('auth/logout', params);
             return response.data;
         } catch (error) {
             return error;
