@@ -20,7 +20,7 @@ const login = async () => {
         loginResult.value = await AuthServices.login({ username: username.value, password: password.value });
         console.log(loginResult.value);
         if (loginResult.value.status === true) {
-            Cookies.set('token', loginResult.value.token);
+            Cookies.set('token_valid', loginResult.value.token);
             Cookies.set('empNo', loginResult.value.UserInformation.empno);
             Cookies.set('name', loginResult.value.UserInformation.fname);
             psaAuthResult.value = await PsaServices.authPSA({ client_id: import.meta.env.VITE_PSA_CLIENT_ID, client_secret: import.meta.env.VITE_PSA_CLIENT_SECRET });
@@ -75,7 +75,7 @@ const redirectToERM = () => {
                         </div>
                     </div>
                 </div>
-                <div class="w-1/2 bg-cover bg-left hidden md:flex" style="background-image: url('/public/demo/images/login-bg.jpg')"></div>
+                <div class="w-1/2 bg-cover bg-left hidden md:flex" style="background-image: url('/demo/images/login-bg.jpg')"></div>
             </div>
         </div>
     </div>
