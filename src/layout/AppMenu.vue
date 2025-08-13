@@ -12,7 +12,7 @@ onMounted(async () => {
 });
 
 const getMenu = async () => {
-    if (Cookies.get('token')) {
+    if (Cookies.get('token_valid')) {
         let user = {
             empNo: Cookies.get('empNo')
         };
