@@ -13,7 +13,7 @@ const router = createRouter({
     history: createWebHistory(),
     routes: [
         {
-            path: '/',
+            path: '/valid',
             redirect: '/self-checkout'
         },
         {
