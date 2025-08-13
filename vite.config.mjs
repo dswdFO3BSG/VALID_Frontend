@@ -10,6 +10,7 @@ export default defineConfig({
     optimizeDeps: {
         noDiscovery: false
     },
+    base: '/',
     plugins: [
         vue(),
         Components({

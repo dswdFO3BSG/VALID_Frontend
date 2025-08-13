@@ -59,7 +59,7 @@ const redirectToERM = () => {
                     <div class="w-full bg-surface-0 dark:bg-surface-900 px-10 pt-10 pb-20">
                         <div class="text-center mb-8">
                             <div class="flex justify-center mb-3">
-                                <img src="../../../../public/demo/images/dsbplogo.png" width="200px" class="mx-4" />
+                                <img src="/public/demo/images/dsbplogo.png" width="200px" class="mx-4" />
                             </div>
                             <div class="text-surface-900 dark:text-surface-0 text-2xl font-medium mb-4">Verification and Authentication of Legitimate Identity</div>
                             <span class="text-muted-color font-medium">Sign in to continue</span>
@@ -75,7 +75,7 @@ const redirectToERM = () => {
                         </div>
                     </div>
                 </div>
-                <div class="w-1/2 bg-cover bg-left hidden md:flex" style="background-image: url('../../../../public/demo/images/login-bg.jpg')"></div>
+                <div class="w-1/2 bg-cover bg-left hidden md:flex" style="background-image: url('/public/demo/images/login-bg.jpg')"></div>
             </div>
         </div>
     </div>
