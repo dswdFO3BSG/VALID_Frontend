@@ -10,17 +10,15 @@ function isAuthenticated() {
 const routes = [
     {
         path: '/valid',
-        redirect: '/self-checkout'
-    },
-    {
-        path: '/self-checkout',
-        name: 'self-checkout',
-        component: () => import('@/views/pages/selfCheckout/SelfCheckout.vue')
+        name: 'valid-kiosk',
+        component: () => import('@/views/pages/selfCheckout/SelfCheckout.vue'),
+        meta: { public: true }
     },
     {
         path: '/login',
         name: 'login',
-        component: () => import('@/views/pages/auth/Login.vue')
+        component: () => import('@/views/pages/auth/Login.vue'),
+        meta: { public: true }
     },
     {
         path: '/',
@@ -53,7 +51,7 @@ const routes = [
             }
         ]
     }
-];
+];``
 
 const router = createRouter({
     history: createWebHistory(),
@@ -63,40 +61,43 @@ const router = createRouter({
 router.beforeEach(async (to, from, next) => {
     const auth = isAuthenticated();
 
-    // Public routes
-    const publicRoutes = ['login', 'self-checkout'];
+    // Allow public pages without checks
+    if (to.meta.public) {
+        if (auth && to.name === 'login') {
+            return next({ name: 'dashboard' });
+        }
+        return next();
+    }
 
-    if (!auth && !publicRoutes.includes(to.name)) {
+    // Redirect to login if not authenticated
+    if (!auth) {
         return next({ name: 'login' });
     }
 
-    if (auth && to.name === 'login') {
-        return next({ name: 'dashboard' });
-    }
-
-    // Check access only if logged in and route is not public
-    if (auth && !publicRoutes.includes(to.name)) {
+    // Check access if logged in
+    try {
         const hasAccess = await checkAccess(to.path);
         if (!hasAccess) {
-            return next({ name: 'accessDenied' });
+            Cookies.remove('token_valid');
+            Cookies.remove('empNo');
+            Cookies.remove('name');
+            window.location.replace('/login');
         }
+    } catch (error) {
+        console.warn('Access check skipped due to error:', error);
+        // Allow navigation even if the check fails (prevents lockouts)
     }
 
     next();
 });
 
-const checkAccess = async (path) => {
-    try {
-        const params = {
-            path,
-            user: Cookies.get('empNo')
-        };
-        const response = await userAccess.checkUserAccessPath(params);
-        return response.data.length > 0;
-    } catch (error) {
-        console.error('Access check failed:', error);
-        return false;
-    }
-};
+async function checkAccess(path) {
+    const params = {
+        path,
+        user: Cookies.get('empNo')
+    };
+    const response = await userAccess.checkUserAccessPath(params);
+    return Array.isArray(response.data) && response.data.length > 0;
+}
 
 export default router;
