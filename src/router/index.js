@@ -9,49 +9,49 @@ function isAuthenticated() {
 
 const routes = [
     {
-        path: '/valid',
+        path: '/valid-kiosk',
         name: 'valid-kiosk',
         component: () => import('@/views/pages/selfCheckout/SelfCheckout.vue'),
         meta: { public: true }
     },
     {
-        path: '/login',
+        path: '/',
         name: 'login',
         component: () => import('@/views/pages/auth/Login.vue'),
         meta: { public: true }
     },
     {
-        path: '/',
+        path: '/valid',
         component: AppLayout,
         children: [
             {
-                path: 'dashboard',
+                path: '/dashboard',
                 name: 'dashboard',
                 component: () => import('@/views/pages/Dashboard.vue')
             },
             {
-                path: 'client-verification',
+                path: '/client-verification',
                 name: 'client-verification',
                 component: () => import('@/views/pages/clientVerification/ClientVerification.vue')
             },
             {
-                path: 'masterlist',
+                path: '/masterlist',
                 name: 'masterlist',
                 component: () => import('@/views/pages/masterlist/generateReports.vue')
             },
             {
-                path: 'settings/user-access',
+                path: '/settings/user-access',
                 name: 'user-access',
                 component: () => import('@/views/pages/settings/UserAccess/UserAccess.vue')
             },
             {
-                path: 'settings/queue-manager',
+                path: '/settings/queue-manager',
                 name: 'queue-manager',
                 component: () => import('@/views/pages/settings/QueueManager/QueueManager.vue')
             }
         ]
     }
-];``
+];
 
 const router = createRouter({
     history: createWebHistory(),
