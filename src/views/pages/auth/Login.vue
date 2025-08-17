@@ -1,7 +1,6 @@
 <script setup>
 // import FloatingConfigurator from '@/components/FloatingConfigurator.vue';
 import AuthServices from '@/service/authentication/AuthServices';
-import PsaServices from '@/service/psa/PsaServices.js';
 import Cookies from 'js-cookie';
 import { ref } from 'vue';
 import { useRouter } from 'vue-router';
@@ -22,13 +21,13 @@ const login = async () => {
         if (loginResult.value.status === true) {
             Cookies.set('token_valid', loginResult.value.token);
             Cookies.set('empNo', loginResult.value.UserInformation.empno);
-            Cookies.set('name', loginResult.value.UserInformation.fname);
-            psaAuthResult.value = await PsaServices.authPSA({ client_id: import.meta.env.VITE_PSA_CLIENT_ID, client_secret: import.meta.env.VITE_PSA_CLIENT_SECRET });
-            console.log(psaAuthResult.value.data);
-            var in30Minutes = 1 / 48;
-            Cookies.set('psa-token', psaAuthResult.value.data.access_token, {
-                expires: in30Minutes
-            });
+            // Cookies.set('name', loginResult.value.UserInformation.fname);
+            // psaAuthResult.value = await PsaServices.authPSA({ client_id: import.meta.env.VITE_PSA_CLIENT_ID, client_secret: import.meta.env.VITE_PSA_CLIENT_SECRET });
+            // console.log(psaAuthResult.value.data);
+            // var in30Minutes = 1 / 48;
+            // Cookies.set('psa-token', psaAuthResult.value.data.access_token, {
+            //     expires: in30Minutes
+            // });
 
             window.location.replace('/dashboard');
         } else {
