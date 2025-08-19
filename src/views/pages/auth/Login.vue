@@ -1,6 +1,7 @@
 <script setup>
 // import FloatingConfigurator from '@/components/FloatingConfigurator.vue';
 import AuthServices from '@/service/authentication/AuthServices';
+import PsaServices from '@/service/psa/PsaServices.js';
 import Cookies from 'js-cookie';
 import { ref } from 'vue';
 import { useRouter } from 'vue-router';
@@ -13,6 +14,18 @@ const psaAuthResult = ref('');
 const loginResultModal = ref(false);
 const loading = ref(false);
 
+function formatEmployeeId(value) {
+    // Remove all non-digit characters
+    const digits = value.replace(/\D/g, '');
+    // Format as XX-YYYYY...
+    if (digits.length <= 2) return digits;
+    return digits.slice(0, 2) + '-' + digits.slice(2);
+}
+
+function onEmployeeIdInput(e) {
+    username.value = formatEmployeeId(e.target.value);
+}
+
 const login = async () => {
     loading.value = true;
     try {
@@ -21,13 +34,13 @@ const login = async () => {
         if (loginResult.value.status === true) {
             Cookies.set('token_valid', loginResult.value.token);
             Cookies.set('empNo', loginResult.value.UserInformation.empno);
-            // Cookies.set('name', loginResult.value.UserInformation.fname);
-            // psaAuthResult.value = await PsaServices.authPSA({ client_id: import.meta.env.VITE_PSA_CLIENT_ID, client_secret: import.meta.env.VITE_PSA_CLIENT_SECRET });
-            // console.log(psaAuthResult.value.data);
-            // var in30Minutes = 1 / 48;
-            // Cookies.set('psa-token', psaAuthResult.value.data.access_token, {
-            //     expires: in30Minutes
-            // });
+            Cookies.set('name', loginResult.value.UserInformation.fname);
+            psaAuthResult.value = await PsaServices.authPSA({ client_id: import.meta.env.VITE_PSA_CLIENT_ID, client_secret: import.meta.env.VITE_PSA_CLIENT_SECRET });
+            console.log(psaAuthResult.value.data);
+            var in30Minutes = 1 / 48;
+            Cookies.set('psa-token', psaAuthResult.value.data.access_token, {
+                expires: in30Minutes
+            });
 
             window.location.replace('/dashboard');
         } else {
@@ -66,7 +79,7 @@ const redirectToERM = () => {
 
                         <div>
                             <label for="email1" class="block text-surface-900 dark:text-surface-0 text-xl font-medium mb-2">Employee ID</label>
-                            <InputMask class="w-full mb-8" id="basic" v-model="username" mask="99-99999" placeholder="03-000000" />
+                            <input class="w-full mb-8 px-3 py-2 border rounded" id="basic" :value="username" @input="onEmployeeIdInput" placeholder="03-000000" maxlength="12" autocomplete="off" type="text" />
 
                             <label for="password1" class="block text-surface-900 dark:text-surface-0 font-medium text-xl mb-2">Password</label>
                             <Password @keyup.enter="login" id="password1" v-model="password" placeholder="Password" :toggleMask="true" class="mb-4 w-full" fluid :feedback="false"></Password>
