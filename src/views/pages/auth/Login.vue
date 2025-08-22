@@ -59,7 +59,7 @@ const closeLoginErrorModal = () => {
 
 const redirectToERM = () => {
     console.log('Redirecting to ERM');
-    window.location.replace('http://172.31.32.57/registration/index.php');
+    window.location.replace('http://172.31.32.25/registration/index.php');
 };
 </script>
 
@@ -83,7 +83,10 @@ const redirectToERM = () => {
 
                             <label for="password1" class="block text-surface-900 dark:text-surface-0 font-medium text-xl mb-2">Password</label>
                             <Password @keyup.enter="login" id="password1" v-model="password" placeholder="Password" :toggleMask="true" class="mb-4 w-full" fluid :feedback="false"></Password>
-                            <Button :loading="loading" @click="login" label="Sign In" class="w-full"></Button>
+                            <Button :loading="loading" @click="login" label="Sign In" class="w-full mb-4"></Button>
+                            <div class="text-center">
+                                <a @click="redirectToERM" class="text-blue-500 hover:text-blue-700 cursor-pointer text-sm">Forgot Password?</a>
+                            </div>
                         </div>
                     </div>
                 </div>

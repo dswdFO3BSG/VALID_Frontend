@@ -26,7 +26,7 @@ const getMenu = async () => {
 const logout = async () => {
     await AuthServices.logout({});
     Cookies.remove('psa-token');
-    Cookies.remove('token');
+    Cookies.remove('token_valid');
     Cookies.remove('empNo');
     Cookies.remove('name');
     window.location.replace('/login');
