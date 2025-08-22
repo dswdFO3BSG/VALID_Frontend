@@ -1,5 +1,6 @@
 import AppLayout from '@/layout/AppLayout.vue';
 import userAccess from '@/service/settings/userAccess.js';
+import noAccess from '@/views/pages/auth/Access.vue';
 import Cookies from 'js-cookie';
 import { createRouter, createWebHistory } from 'vue-router';
 
@@ -20,6 +21,13 @@ const routes = [
         component: () => import('@/views/pages/auth/Login.vue'),
         meta: { public: true }
     },
+    {
+        path: '/no-access',
+        name: 'no-access',
+        component: noAccess,
+        meta: { public: true }
+    },
+
     {
         path: '/valid',
         component: AppLayout,
@@ -78,10 +86,7 @@ router.beforeEach(async (to, from, next) => {
     try {
         const hasAccess = await checkAccess(to.path);
         if (!hasAccess) {
-            Cookies.remove('token_valid');
-            Cookies.remove('empNo');
-            Cookies.remove('name');
-            window.location.replace('/login');
+            return next({ name: 'no-access' });
         }
     } catch (error) {
         console.warn('Access check skipped due to error:', error);
