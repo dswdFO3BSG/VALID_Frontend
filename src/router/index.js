@@ -56,6 +56,11 @@ const routes = [
                 path: '/settings/queue-manager',
                 name: 'queue-manager',
                 component: () => import('@/views/pages/settings/QueueManager/QueueManager.vue')
+            },
+            {
+                path: '/settings/audit-trail',
+                name: 'audit-trail',
+                component: () => import('@/views/pages/settings/AuditTrail/AuditTrail.vue')
             }
         ]
     }
