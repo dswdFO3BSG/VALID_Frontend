@@ -4,8 +4,9 @@ import MFAService from '@/service/auth/MFAService.js';
 import PasswordEncryptionService from '@/service/auth/PasswordEncryptionService.js';
 import AuthServices from '@/service/authentication/AuthServices';
 import PsaServices from '@/service/psa/PsaServices.js';
+import RecaptchaService from '@/service/recaptcha/RecaptchaService.js';
 import Cookies from 'js-cookie';
-import { ref } from 'vue';
+import { onMounted, ref } from 'vue';
 import { useRouter } from 'vue-router';
 
 const router = useRouter();
@@ -158,12 +159,27 @@ const login = async () => {
         loading.value = false;
     } catch (error) {
         console.log(error);
+        loading.value = false;
+
+        // Handle reCAPTCHA errors
+        if (error.message && error.message.includes('reCAPTCHA')) {
+            loginResult.value = {
+                error: 'reCAPTCHA verification failed. Please try again.',
+                validation: '1'
+            };
+            loginResultModal.value = true;
+        }
     }
 };
 
 const closeLoginErrorModal = () => {
     loginResultModal.value = false;
     password.value = '';
+    // Comment out v2 reset functionality
+    // if (typeof grecaptcha !== 'undefined') {
+    //     grecaptcha.reset();
+    //     recaptchaResponse.value = '';
+    // }
 };
 
 const redirectToERM = () => {
@@ -367,7 +383,7 @@ const copySecretKey = () => {
 
 <template>
     <div class="flex items-center justify-center min-h-screen min-w-[100vw] overflow-hidden px-4 lg:px-0" style="background-color: #d9dee8">
-        <div class="flex flex-col items-center justify-center w-full lg:w-4/6" style="max-width: 850px">
+        <div class="flex flex-col items-center justify-center w-full lg:w-4/6" style="max-width: 1000px">
             <div class="flex border border-gray-300 rounded-lg shadow-lg w-full overflow-hidden" style="border-radius: 30px">
                 <div class="w-full md:w-1/2 flex flex-col justify-center items-center">
                     <div class="w-full bg-surface-0 dark:bg-surface-900 px-10 pt-10 pb-20">
@@ -380,8 +396,8 @@ const copySecretKey = () => {
                         </div>
 
                         <div>
-                            <label for="email1" class="block text-surface-900 dark:text-surface-0 text-xl font-medium mb-2">Employee ID</label>
-                            <input class="w-full mb-8 px-3 py-2 border rounded" id="basic" :value="username" @input="onEmployeeIdInput" placeholder="03-000000" maxlength="12" autocomplete="off" type="text" />
+                            <label for="email1" class="block text-surface-900 dark:text-surface-0 text-xl font-medium mb-1">Employee ID</label>
+                            <input class="w-full mb-4 px-3 py-2 border rounded" id="basic" :value="username" @input="onEmployeeIdInput" placeholder="03-000000" maxlength="12" autocomplete="off" type="text" />
 
                             <label for="password1" class="block text-surface-900 dark:text-surface-0 font-medium text-xl mb-1">Password</label>
                             <div class="relative mb-4 w-full">
