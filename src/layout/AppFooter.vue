@@ -3,7 +3,7 @@
 
 <template>
     <div class="layout-footer">
-        Client Verification System by
+        VALID by
         <span class="text-primary font-bold">RICTMS</span>
     </div>
 </template>

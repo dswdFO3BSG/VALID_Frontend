@@ -12,7 +12,7 @@ onMounted(async () => {
 });
 
 const getMenu = async () => {
-    if (Cookies.get('token')) {
+    if (Cookies.get('token_valid')) {
         let user = {
             empNo: Cookies.get('empNo')
         };
@@ -26,7 +26,7 @@ const getMenu = async () => {
 const logout = async () => {
     await AuthServices.logout({});
     Cookies.remove('psa-token');
-    Cookies.remove('token');
+    Cookies.remove('token_valid');
     Cookies.remove('empNo');
     Cookies.remove('name');
     window.location.replace('/login');

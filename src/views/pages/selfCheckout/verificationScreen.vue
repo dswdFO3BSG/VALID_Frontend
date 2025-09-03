@@ -120,7 +120,7 @@
                             </div>
                         </Step>
                         <Step v-slot="{ activateCallback, value, a11yAttrs }" asChild :value="4">
-                            <div class="flex flex-row flex-auto gap-2 pl-2" v-bind="a11yAttrs.root">
+                            <div class="flex flex-row flex-auto gap-2" v-bind="a11yAttrs.root">
                                 <button class="bg-transparent border-0 inline-flex flex-col gap-2" @click="activateCallback" v-bind="a11yAttrs.header">
                                     <span :class="['rounded-full border-2 w-12 h-12 inline-flex items-center justify-center', { 'bg-[#2D318F] text-white': value <= activeStep, 'border-surface-200 dark:border-surface-700': value > activeStep }]">
                                         <p>4</p>
@@ -130,10 +130,20 @@
                             </div>
                         </Step>
                         <Step v-slot="{ activateCallback, value, a11yAttrs }" asChild :value="5">
-                            <div class="flex flex-row pl-2" v-bind="a11yAttrs.root">
+                            <div class="flex flex-row flex-auto gap-2" v-bind="a11yAttrs.root">
                                 <button class="bg-transparent border-0 inline-flex flex-col gap-2" @click="activateCallback" v-bind="a11yAttrs.header">
                                     <span :class="['rounded-full border-2 w-12 h-12 inline-flex items-center justify-center', { 'bg-[#2D318F] text-white': value <= activeStep, 'border-surface-200 dark:border-surface-700': value > activeStep }]">
                                         <p>5</p>
+                                    </span>
+                                </button>
+                                <Divider />
+                            </div>
+                        </Step>
+                        <Step v-slot="{ activateCallback, value, a11yAttrs }" asChild :value="6">
+                            <div class="flex flex-row flex-auto gap-2" v-bind="a11yAttrs.root">
+                                <button class="bg-transparent border-0 inline-flex flex-col gap-2" @click="activateCallback" v-bind="a11yAttrs.header">
+                                    <span :class="['rounded-full border-2 w-12 h-12 inline-flex items-center justify-center', { 'bg-[#2D318F] text-white': value <= activeStep, 'border-surface-200 dark:border-surface-700': value > activeStep }]">
+                                        <p>6</p>
                                     </span>
                                 </button>
                             </div>
@@ -144,25 +154,162 @@
                         <StepPanel v-slot="{ activateCallback }" :value="1">
                             <Transition name="fade-slide" mode="out-in">
                                 <template v-if="activeStep === 1">
-                                    <div class="flex flex-col gap-5 mx-auto mt-4 h-full w-full justify-center items-center" style="max-width: 80%" key="step1">
-                                        <h1 class="text-center mt-4 mb-4">Privacy Policy and Consent Notice</h1>
-                                        <div class="bg-white rounded-xl shadow p-8 w-full max-w-2xl text-gray-800 text-lg overflow-y-auto" style="max-height: 40vh">
-                                            <p>
-                                                This Self Verification Kiosk collects and processes your personal information for the purpose of identity verification and authentication. By proceeding, you consent to the collection, use, and storage
-                                                of your data in accordance with our privacy policy and applicable laws. Your information will be handled securely and will not be shared with unauthorized parties.
-                                            </p>
-                                            <ul class="list-disc pl-6 mt-4">
-                                                <li>Your name, birth date, and other personal details will be used for verification.</li>
-                                                <li>Biometric data (such as facial image) may be collected for liveness detection and identity matching.</li>
-                                                <li>All data is encrypted and stored securely.</li>
-                                                <li>You have the right to access and correct your personal data.</li>
-                                            </ul>
+                                    <div class="flex flex-col gap-5 mx-auto mt-4 h-full w-full justify-center items-center" style="max-width: 85%" key="step1">
+                                        <h1 class="text-center text-4xl mt-4 mb-4 text-[#2D318F] font-bold">PRIVACY NOTICE</h1>
+                                        <div class="bg-white rounded-xl shadow-lg border-2 border-gray-200 p-6 w-full max-w-4xl text-gray-800 overflow-y-auto" style="max-height: 50vh">
+                                            <div class="space-y-4 text-sm">
+                                                <!-- Header -->
+                                                <div class="text-center mb-6">
+                                                    <h2 class="text-lg font-bold text-[#2D318F] mb-2">Department of Social Welfare and Development</h2>
+                                                    <h3 class="text-base font-semibold">VALID System (Verification and Authentication for Legitimate Identification)</h3>
+                                                    <h4 class="text-base font-semibold text-gray-700 mt-2">PRIVACY NOTICE AND CONSENT</h4>
+                                                </div>
+
+                                                <!-- Introduction -->
+                                                <div class="mb-4 bg-blue-50 p-4 rounded-lg border-l-4 border-blue-400">
+                                                    <p class="font-medium">
+                                                        The Department of Social Welfare and Development (DSWD) is committed to protecting your personal data privacy and ensuring transparency in our data processing activities. This Privacy Notice
+                                                        explains how we collect, use, store, and protect your personal information through the VALID System.
+                                                    </p>
+                                                </div>
+
+                                                <!-- Data Collection Section -->
+                                                <div class="mb-4">
+                                                    <h3 class="font-bold text-base text-[#2D318F] mb-2">1. PERSONAL INFORMATION WE COLLECT</h3>
+                                                    <p class="mb-3">We collect the following personal information necessary for identity verification and service delivery:</p>
+                                                    <ul class="list-disc pl-6 space-y-1 text-sm">
+                                                        <li><strong>Basic Information:</strong> Full name, date of birth, address, contact details</li>
+                                                        <li><strong>Biometric Data:</strong> Facial images for liveness detection and identity matching</li>
+                                                        <li><strong>Government IDs:</strong> PhilSys data and other government-issued identification documents</li>
+                                                        <li><strong>Service Information:</strong> Program applications, queue numbers, transaction records, service history</li>
+                                                        <li><strong>Technical Data:</strong> Kiosk usage logs, timestamps, and system interaction data</li>
+                                                    </ul>
+                                                </div>
+
+                                                <!-- Purpose Section -->
+                                                <div class="mb-4">
+                                                    <h3 class="font-bold text-base text-[#2D318F] mb-2">2. PURPOSE OF DATA COLLECTION</h3>
+                                                    <ul class="list-disc pl-6 space-y-1 text-sm">
+                                                        <li>Identity verification and authentication for DSWD social services</li>
+                                                        <li>Prevention of fraud, duplicate applications, and unauthorized access</li>
+                                                        <li>Queue management and efficient service delivery</li>
+                                                        <li>Program eligibility assessment and verification</li>
+                                                        <li>Statistical reporting, service improvement, and policy development</li>
+                                                        <li>Compliance with legal and regulatory requirements</li>
+                                                    </ul>
+                                                </div>
+
+                                                <!-- Legal Basis -->
+                                                <div class="mb-4">
+                                                    <h3 class="font-bold text-base text-[#2D318F] mb-2">3. LEGAL BASIS FOR PROCESSING</h3>
+                                                    <p class="mb-2">Data collection and processing is authorized under:</p>
+                                                    <ul class="list-disc pl-6 space-y-1 text-sm">
+                                                        <li>Republic Act No. 10173 (Data Privacy Act of 2012)</li>
+                                                        <li>Republic Act No. 11055 (Philippine Identification System Act)</li>
+                                                        <li>Republic Act No. 11261 (First 1000 Days Law)</li>
+                                                        <li>DSWD administrative orders and service delivery mandates</li>
+                                                        <li>Your explicit consent for biometric data processing</li>
+                                                    </ul>
+                                                </div>
+
+                                                <!-- Data Sharing -->
+                                                <div class="mb-4">
+                                                    <h3 class="font-bold text-base text-[#2D318F] mb-2">4. DATA SHARING AND DISCLOSURE</h3>
+                                                    <p class="mb-2">Your personal data may be shared with:</p>
+                                                    <ul class="list-disc pl-6 space-y-1 text-sm">
+                                                        <li><strong>Philippine Statistics Authority (PSA):</strong> For PhilSys verification and demographic validation</li>
+                                                        <li><strong>Other Government Agencies:</strong> As required by law and for inter-agency coordination</li>
+                                                        <li><strong>Authorized DSWD Personnel:</strong> Field offices, regional offices, and central office staff for service delivery</li>
+                                                        <li><strong>Technology Partners:</strong> Authorized system administrators and technical support (under strict confidentiality agreements)</li>
+                                                    </ul>
+                                                    <p class="mt-2 font-medium text-red-600">We DO NOT share your data with unauthorized third parties, commercial entities, or for marketing purposes.</p>
+                                                </div>
+
+                                                <!-- Data Security -->
+                                                <div class="mb-4">
+                                                    <h3 class="font-bold text-base text-[#2D318F] mb-2">5. DATA SECURITY MEASURES</h3>
+                                                    <ul class="list-disc pl-6 space-y-1 text-sm">
+                                                        <li>End-to-end encryption during data transmission and storage</li>
+                                                        <li>Multi-factor authentication and role-based access controls</li>
+                                                        <li>Regular security audits, monitoring, and vulnerability assessments</li>
+                                                        <li>Secure data centers with physical and digital safeguards</li>
+                                                        <li>Data backup and disaster recovery procedures</li>
+                                                        <li>Employee training on data privacy and security protocols</li>
+                                                    </ul>
+                                                </div>
+
+                                                <!-- Your Rights -->
+                                                <div class="mb-4">
+                                                    <h3 class="font-bold text-base text-[#2D318F] mb-2">6. YOUR RIGHTS AS DATA SUBJECT</h3>
+                                                    <ul class="list-disc pl-6 space-y-1 text-sm">
+                                                        <li><strong>Right to Be Informed:</strong> This privacy notice and information about processing</li>
+                                                        <li><strong>Right of Access:</strong> Request copies of your personal data held by DSWD</li>
+                                                        <li><strong>Right to Rectification:</strong> Request correction of inaccurate or incomplete data</li>
+                                                        <li><strong>Right to Erasure:</strong> Request deletion of data under certain conditions</li>
+                                                        <li><strong>Right to Data Portability:</strong> Request data in machine-readable format</li>
+                                                        <li><strong>Right to Object:</strong> Object to certain types of processing</li>
+                                                        <li><strong>Right to Withdraw Consent:</strong> Withdraw consent for optional data processing</li>
+                                                    </ul>
+                                                </div>
+
+                                                <!-- Contact Information -->
+                                                <div class="mb-4">
+                                                    <h3 class="font-bold text-base text-[#2D318F] mb-2">7. CONTACT INFORMATION</h3>
+                                                    <div class="bg-gray-50 p-3 rounded border">
+                                                        <p><strong>Data Protection Officer (DPO):</strong></p>
+                                                        <p>
+                                                            Department of Social Welfare and Development<br />
+                                                            Batasan Pambansa Complex, Constitution Hills<br />
+                                                            Quezon City 1126, Philippines<br />
+                                                            <strong>Email:</strong> dpo@dswd.gov.ph<br />
+                                                            <strong>Phone:</strong> (02) 8931-8101 to 07<br />
+                                                            <strong>Website:</strong> www.dswd.gov.ph
+                                                        </p>
+                                                    </div>
+                                                </div>
+
+                                                <!-- Data Retention -->
+                                                <div class="mb-4">
+                                                    <h3 class="font-bold text-base text-[#2D318F] mb-2">8. DATA RETENTION PERIOD</h3>
+                                                    <ul class="list-disc pl-6 space-y-1 text-sm">
+                                                        <li><strong>Biometric Data:</strong> Deleted immediately after successful verification unless required for ongoing service delivery</li>
+                                                        <li><strong>Transaction Records:</strong> Retained for 7 years or as required by applicable laws</li>
+                                                        <li><strong>Personal Information:</strong> Retained only as long as necessary for service delivery and legal compliance</li>
+                                                        <li><strong>System Logs:</strong> Retained for 1 year for security and audit purposes</li>
+                                                    </ul>
+                                                </div>
+
+                                                <!-- Consent -->
+                                                <div class="bg-yellow-50 p-4 rounded-lg border-l-4 border-yellow-400">
+                                                    <h3 class="font-bold text-base text-[#2D318F] mb-2">9. YOUR CONSENT</h3>
+                                                    <p class="font-medium">
+                                                        By checking the consent box below and proceeding with this kiosk, you acknowledge that you have read, understood, and agree to this Privacy Notice. You consent to the collection, use,
+                                                        processing, and storage of your personal data as described above.
+                                                    </p>
+                                                </div>
+
+                                                <!-- Consent Checkbox at the very bottom of privacy policy -->
+                                                <div class="flex items-start mt-6 p-4 bg-blue-50 rounded-lg border-2 border-blue-200">
+                                                    <input id="privacy-agree" type="checkbox" v-model="privacyAgreed" class="w-6 h-6 mr-4 mt-1 accent-[#2D318F] flex-shrink-0" />
+                                                    <label for="privacy-agree" class="text-lg font-semibold select-none text-gray-800 leading-relaxed">
+                                                        I have read and understood the Privacy Notice and Consent above. I hereby give my free, prior, and informed consent for DSWD to collect, use, process, and store my personal data as described in
+                                                        this notice. I understand my rights as a data subject and how to exercise them.
+                                                    </label>
+                                                </div>
+                                            </div>
                                         </div>
-                                        <div class="flex items-center mt-6">
-                                            <input id="privacy-agree" type="checkbox" v-model="privacyAgreed" class="w-6 h-6 mr-3 accent-primary" />
-                                            <label for="privacy-agree" class="text-xl font-semibold select-none">I have read and agree to the Privacy Policy and Consent Notice.</label>
+
+                                        <!-- Buttons -->
+                                        <div class="flex gap-4 w-full max-w-4xl mt-6">
+                                            <button class="flex-1 bg-gray-500 text-white text-2xl py-4 rounded-xl shadow-lg hover:bg-gray-600 transition" @click="resetKiosk">Cancel</button>
+                                            <button
+                                                class="flex-1 bg-[#2D318F] text-white text-2xl py-4 rounded-xl shadow-lg hover:bg-[#1e256b] transition disabled:opacity-50 disabled:cursor-not-allowed"
+                                                :disabled="!privacyAgreed"
+                                                @click="activateCallback(2)"
+                                            >
+                                                I Agree - Continue
+                                            </button>
                                         </div>
-                                        <button class="mt-8 bg-[#2D318F] text-white text-3xl w-full py-6 rounded-xl shadow-lg hover:bg-[#2D318F] transition disabled:opacity-50" :disabled="!privacyAgreed" @click="activateCallback(2)">Next</button>
                                     </div>
                                 </template>
                             </Transition>
@@ -312,7 +459,7 @@
                                                 >
                                                     Go Back
                                                 </button>
-                                                <button type="button" class="bg-[#2D318F] text-white text-3xl flex-1 py-6 rounded-xl shadow-lg hover:bg-[#2D318F] transition" @click="searchClient">Submit</button>
+                                                <button type="button" class="bg-[#2D318F] text-white text-3xl flex-1 py-6 rounded-xl shadow-lg hover:bg-[#2D318F] transition" @click="activateCallback(6)">Next</button>
                                             </div>
                                         </div>
                                     </div>
@@ -338,8 +485,131 @@
                                                 >
                                                     Go Back
                                                 </button>
-                                                <button type="button" class="bg-[#2D318F] text-white text-3xl flex-1 py-6 rounded-xl shadow-lg hover:bg-[#2D318F] transition" @click="getClients">Submit</button>
+                                                <button type="button" class="bg-[#2D318F] text-white text-3xl flex-1 py-6 rounded-xl shadow-lg hover:bg-[#2D318F] transition" @click="activateCallback(6)">Next</button>
                                             </div>
+                                        </div>
+                                    </div>
+                                </template>
+                            </Transition>
+                        </StepPanel>
+                        <StepPanel v-slot="{ activateCallback }" :value="6">
+                            <Transition name="fade-slide" mode="out-in">
+                                <template v-if="activeStep === 6">
+                                    <!-- Consent Decline Message -->
+                                    <div v-if="showConsentDeclineMessage" class="flex flex-col gap-8 mx-auto mt-4 h-full w-full justify-center items-center" style="max-width: 80%" key="consent-decline">
+                                        <div class="bg-red-50 border-2 border-red-200 rounded-xl p-8 w-full max-w-3xl text-center">
+                                            <div class="mb-6">
+                                                <svg class="w-20 h-20 text-red-500 mx-auto mb-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                                                    <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-2.5L13.732 4c-.77-.833-1.732-.833-2.464 0L4.35 16.5c-.77.833.192 2.5 1.732 2.5z" />
+                                                </svg>
+                                                <h2 class="text-4xl font-bold text-red-600 mb-4">CANNOT PROCEED</h2>
+                                            </div>
+
+                                            <div class="bg-white rounded-lg p-6 mb-6 border-l-4 border-red-400">
+                                                <p class="text-2xl text-gray-800 leading-relaxed">
+                                                    We cannot proceed with identity validation without your consent to collect and process your personal data. Please approach the DSWD staff for alternative assistance.
+                                                </p>
+                                            </div>
+
+                                            <div class="flex gap-4 justify-center">
+                                                <button class="bg-gray-500 text-white text-2xl py-4 px-8 rounded-xl shadow-lg hover:bg-gray-600 transition" @click="activateCallback(5)">Go Back</button>
+                                                <button class="bg-red-500 text-white text-2xl py-4 px-8 rounded-xl shadow-lg hover:bg-red-600 transition" @click="resetKiosk">Exit Kiosk</button>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- Consent Statement -->
+                                    <div v-else class="flex flex-col gap-6 mx-auto mt-4 h-full w-full justify-center items-center" style="max-width: 85%" key="consent-step">
+                                        <h1 class="text-center text-4xl mt-4 mb-4 text-[#2D318F] font-bold">CONSENT FOR DATA PROCESSING</h1>
+
+                                        <div class="bg-white rounded-xl shadow-lg border-2 border-blue-200 p-6 w-full max-w-4xl text-gray-800">
+                                            <div class="space-y-4">
+                                                <!-- Summary of entered data -->
+                                                <!-- <div class="bg-blue-50 p-4 rounded-lg border-l-4 border-blue-400 mb-4">
+                                                    <h3 class="font-bold text-lg text-[#2D318F] mb-2">Data to be Processed:</h3>
+                                                    <div class="grid grid-cols-2 gap-4 text-base">
+                                                        <div><strong>Name:</strong> {{ clientDetails.firstName }} {{ clientDetails.middleName }} {{ clientDetails.lastName }} {{ clientDetails.suffix }}</div>
+                                                        <div><strong>Birth Date:</strong> {{ clientDetails.birthDate }}</div>
+                                                        <div v-if="clientDetails.beneficiary_id"><strong>Beneficiary ID:</strong> {{ clientDetails.beneficiary_id }}</div>
+                                                        <div><strong>Service:</strong> {{ selectedProgram?.name }}</div>
+                                                        <div><strong>Category:</strong> {{ selectedSector?.name }}</div>
+                                                    </div>
+                                                </div> -->
+
+                                                <!-- Consent Statement -->
+                                                <div class="p-4 my-6 rounded-lg">
+                                                    <h3 class="font-bold text-lg text-center text-[#2D318F] mb-3">CONSENT STATEMENT</h3>
+
+                                                    <p class="text-base leading-relaxed mb-4 text-gray-800 text-center">
+                                                        By proceeding, you voluntarily give your consent to the <strong>Department of Social Welfare and Development (DSWD) Field Office III</strong> to collect and process your personal data, including
+                                                        your <strong>name, date of birth, and selfie image</strong>, for the purpose of validating your identity through the <strong>Philippine Statistics Authority (PSA) PhilSys database</strong>.
+                                                    </p>
+
+                                                    <p class="text-base leading-relaxed font-medium text-gray-800 text-center">
+                                                        Your data will only be used for verification, stored securely, and not shared with other parties except as required by law. You may exercise your rights under the
+                                                        <strong>Data Privacy Act of 2012</strong>, including the rights to access, correct, or withdraw your information, by submitting a Data Subject Request. For more details, please view our Privacy
+                                                        Notice or contact our Compliance Officer for Privacy / Data Protection Office.
+                                                    </p>
+                                                </div>
+
+                                                <!-- Warning Notice -->
+                                                <div class="bg-red-50 p-4 rounded-lg border-l-4 border-red-400">
+                                                    <p class="text-base font-medium text-red-800">
+                                                        <strong>Important:</strong> If you do not consent to this data processing, we cannot proceed with the biometric verification and you will need to seek alternative assistance from DSWD staff.
+                                                    </p>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <!-- Consent Options -->
+                                        <div class="bg-white rounded-xl shadow-lg border-2 border-gray-200 p-6 w-full max-w-4xl">
+                                            <p class="text-lg text-center mb-6 text-gray-700">Do you give your free, voluntary, and informed consent to process your personal data as described above?</p>
+
+                                            <div class="flex gap-6 justify-center">
+                                                <!-- I Do Not Consent Button -->
+                                                <label class="flex items-center cursor-pointer">
+                                                    <input type="radio" name="consent" :value="false" v-model="consentGiven" class="hidden" />
+                                                    <div
+                                                        :class="[
+                                                            'flex items-center justify-center px-8 py-4 rounded-xl border-2 text-xl font-bold transition-all',
+                                                            consentGiven === false ? 'bg-red-500 text-white border-red-500 shadow-lg transform scale-105' : 'bg-white text-red-500 border-red-500 hover:bg-red-50'
+                                                        ]"
+                                                    >
+                                                        <svg class="w-6 h-6 mr-3" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                                                            <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+                                                        </svg>
+                                                        I Do Not Consent
+                                                    </div>
+                                                </label>
+
+                                                <!-- I Agree/Proceed Button -->
+                                                <label class="flex items-center cursor-pointer">
+                                                    <input type="radio" name="consent" :value="true" v-model="consentGiven" class="hidden" />
+                                                    <div
+                                                        :class="[
+                                                            'flex items-center justify-center px-8 py-4 rounded-xl border-2 text-xl font-bold transition-all',
+                                                            consentGiven === true ? 'bg-green-500 text-white border-green-500 shadow-lg transform scale-105' : 'bg-white text-green-500 border-green-500 hover:bg-green-50'
+                                                        ]"
+                                                    >
+                                                        <svg class="w-6 h-6 mr-3" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                                                            <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
+                                                        </svg>
+                                                        I Agree / Proceed
+                                                    </div>
+                                                </label>
+                                            </div>
+                                        </div>
+
+                                        <!-- Action Buttons -->
+                                        <div class="flex gap-6 w-full max-w-4xl mt-6">
+                                            <button class="flex-1 bg-gray-500 text-white text-2xl py-4 rounded-xl shadow-lg hover:bg-gray-600 transition" @click="activateCallback(5)">Go Back</button>
+                                            <button
+                                                class="flex-1 bg-[#2D318F] text-white text-2xl py-4 rounded-xl shadow-lg hover:bg-[#1e256b] transition disabled:opacity-50 disabled:cursor-not-allowed"
+                                                :disabled="consentGiven === null"
+                                                @click="handleConsentSubmission"
+                                            >
+                                                Continue
+                                            </button>
                                         </div>
                                     </div>
                                 </template>
@@ -372,6 +642,8 @@ const toast = useToast();
 const isLivenessDialogVisible = ref(false);
 const verificationResultModal = ref(false);
 const privacyAgreed = ref(false);
+const consentGiven = ref(null); // null = not selected, true = agreed, false = disagreed
+const showConsentDeclineMessage = ref(false);
 const showSuccessScreen = ref(false);
 const verificationResult = ref({});
 const verificationResultMessage = ref('');
@@ -427,6 +699,21 @@ const handleProgramClick = (program, section, activateCallback) => {
     activateCallback(section);
     selectedProgram.value = program;
     console.log('Selected program value:', selectedProgram.value);
+};
+
+const handleConsentSubmission = () => {
+    if (consentGiven.value === false) {
+        // User declined consent
+        showConsentDeclineMessage.value = true;
+    } else if (consentGiven.value === true) {
+        // User gave consent, proceed with verification
+        showConsentDeclineMessage.value = false;
+        if (selectedClientType.value === 2) {
+            searchClient();
+        } else {
+            getClients();
+        }
+    }
 };
 
 const inputVerification = () => {
@@ -698,6 +985,8 @@ const resetKiosk = () => {
     showSuccessScreen.value = false;
     activeStep.value = 1;
     privacyAgreed.value = false;
+    consentGiven.value = null;
+    showConsentDeclineMessage.value = false;
     selectedSector.value = null;
     selectedProgram.value = null;
     selectedClientType.value = null;

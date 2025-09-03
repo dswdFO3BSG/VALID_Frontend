@@ -5,7 +5,7 @@ import setupPSAInterceptor from '../interceptors/psaInterceptors.js';
 
 // for local
 const authAxiosInstance = axios.create();
-setupAuthInterceptor(authAxiosInstance, Cookies.get('token'));
+setupAuthInterceptor(authAxiosInstance, Cookies.get('token_valid'));
 
 // for PSA
 const psaAxiosInstance = axios.create();

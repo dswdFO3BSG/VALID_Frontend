@@ -73,7 +73,7 @@ const searchClient = async () => {
             },
             accept: async () => {
                 verificationType.value = verifyClient;
-                await startLiveness();
+                // await startLiveness();
             },
             reject: () => {
                 clearFilters();
@@ -108,7 +108,7 @@ const checkPSAtoken = async () => {
 
 const handleReverification = async (clientData) => {
     verificationType.value = reverifyClient;
-    await startLiveness(clientData);
+    // await startLiveness(clientData);
 };
 
 const reverifyClient = async (clientData) => {
@@ -252,22 +252,22 @@ const verifyClient = async (clientData) => {
     await getClients();
 };
 
-const startLiveness = (clientData) => {
-    window
-        .eKYC()
-        .start({
-            pubKey: 'eyJpdiI6IjNVK2NPNEVvYUQxbVlmZEU4REV0bmc9PSIsInZhbHVlIjoibUJHT3VNWUxBdm11VnQzc0xvZmpjZz09IiwibWFjIjoiNDlkOWRjZTY5MDVmNDcwZmRlOWFmZTg2NmQ2MTcwNjE0NWY1YTRkNjczMTRjMWQ0NGQ2YWM4NjkwMzQ4NTRjZiIsInRhZyI6IiJ9'
-        })
-        .then(async (data) => {
-            verification_session_id.value = data.result.session_id;
-            console.log(verification_session_id.value);
-            isLivenessDialogVisible.value = false;
-            await verificationType.value(clientData);
-        })
-        .catch((err) => {
-            console.log('error', err);
-        });
-};
+// const startLiveness = (clientData) => {
+//     window
+//         .eKYC()
+//         .start({
+//             pubKey: 'eyJpdiI6IjNVK2NPNEVvYUQxbVlmZEU4REV0bmc9PSIsInZhbHVlIjoibUJHT3VNWUxBdm11VnQzc0xvZmpjZz09IiwibWFjIjoiNDlkOWRjZTY5MDVmNDcwZmRlOWFmZTg2NmQ2MTcwNjE0NWY1YTRkNjczMTRjMWQ0NGQ2YWM4NjkwMzQ4NTRjZiIsInRhZyI6IiJ9'
+//         })
+//         .then(async (data) => {
+//             verification_session_id.value = data.result.session_id;
+//             console.log(verification_session_id.value);
+//             isLivenessDialogVisible.value = false;
+//             await verificationType.value(clientData);
+//         })
+//         .catch((err) => {
+//             console.log('error', err);
+//         });
+// };
 
 const saveVerificationResult = async () => {
     verificationResultModal.value = false;

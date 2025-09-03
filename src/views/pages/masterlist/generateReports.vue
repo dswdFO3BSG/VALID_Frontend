@@ -198,6 +198,7 @@ async function saveAndPrintPhoto() {
             await generateQRCode(printClient.value);
             await nextTick();
             printID();
+            searchClient();
         }
     } catch (error) {
         console.log('Error uploading photo:', error);
