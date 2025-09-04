@@ -176,79 +176,62 @@
                                                 <!-- Data Collection Section -->
                                                 <div class="mb-4">
                                                     <h3 class="font-bold text-base text-[#2D318F] mb-2">1. PERSONAL INFORMATION WE COLLECT</h3>
-                                                    <p class="mb-3">We collect the following personal information necessary for identity verification and service delivery:</p>
-                                                    <ul class="list-disc pl-6 space-y-1 text-sm">
-                                                        <li><strong>Basic Information:</strong> Full name, date of birth, address, contact details</li>
-                                                        <li><strong>Biometric Data:</strong> Facial images for liveness detection and identity matching</li>
-                                                        <li><strong>Government IDs:</strong> PhilSys data and other government-issued identification documents</li>
-                                                        <li><strong>Service Information:</strong> Program applications, queue numbers, transaction records, service history</li>
-                                                        <li><strong>Technical Data:</strong> Kiosk usage logs, timestamps, and system interaction data</li>
-                                                    </ul>
+                                                    <p class="mb-3">When you use the VALID Kiosk, we collect the following information: full name, date of birth, and selfie image (for identity verification).</p>
                                                 </div>
 
                                                 <!-- Purpose Section -->
                                                 <div class="mb-4">
                                                     <h3 class="font-bold text-base text-[#2D318F] mb-2">2. PURPOSE OF DATA COLLECTION</h3>
-                                                    <ul class="list-disc pl-6 space-y-1 text-sm">
-                                                        <li>Identity verification and authentication for DSWD social services</li>
-                                                        <li>Prevention of fraud, duplicate applications, and unauthorized access</li>
-                                                        <li>Queue management and efficient service delivery</li>
-                                                        <li>Program eligibility assessment and verification</li>
-                                                        <li>Statistical reporting, service improvement, and policy development</li>
-                                                        <li>Compliance with legal and regulatory requirements</li>
-                                                    </ul>
+                                                    <p class="mb-3">
+                                                        Your personal data is collected for the sole purpose of verifying your identity through the Philippine Statistics Authority (PSA) PhilSys API. This helps us confirm if you have a valid PhilSys
+                                                        ID and ensures accurate and secure client validation for DSWD programs and services.
+                                                    </p>
                                                 </div>
 
                                                 <!-- Legal Basis -->
                                                 <div class="mb-4">
-                                                    <h3 class="font-bold text-base text-[#2D318F] mb-2">3. LEGAL BASIS FOR PROCESSING</h3>
+                                                    <h3 class="font-bold text-base text-[#2D318F] mb-2">3. DATA SHARING AND DISCLOSURE</h3>
                                                     <p class="mb-2">Data collection and processing is authorized under:</p>
                                                     <ul class="list-disc pl-6 space-y-1 text-sm">
-                                                        <li>Republic Act No. 10173 (Data Privacy Act of 2012)</li>
-                                                        <li>Republic Act No. 11055 (Philippine Identification System Act)</li>
-                                                        <li>Republic Act No. 11261 (First 1000 Days Law)</li>
-                                                        <li>DSWD administrative orders and service delivery mandates</li>
-                                                        <li>Your explicit consent for biometric data processing</li>
+                                                        <li>Your data is transmitted securely to the PSA PhilSys API for identity verification.</li>
+                                                        <li>No other third party will have access to your data unless required by law or with your consent.</li>
+                                                        <li>DSWD does not sell, rent, or trade your personal data.</li>
                                                     </ul>
                                                 </div>
 
                                                 <!-- Data Sharing -->
                                                 <div class="mb-4">
-                                                    <h3 class="font-bold text-base text-[#2D318F] mb-2">4. DATA SHARING AND DISCLOSURE</h3>
+                                                    <h3 class="font-bold text-base text-[#2D318F] mb-2">4. Data Retention</h3>
                                                     <p class="mb-2">Your personal data may be shared with:</p>
                                                     <ul class="list-disc pl-6 space-y-1 text-sm">
-                                                        <li><strong>Philippine Statistics Authority (PSA):</strong> For PhilSys verification and demographic validation</li>
-                                                        <li><strong>Other Government Agencies:</strong> As required by law and for inter-agency coordination</li>
-                                                        <li><strong>Authorized DSWD Personnel:</strong> Field offices, regional offices, and central office staff for service delivery</li>
-                                                        <li><strong>Technology Partners:</strong> Authorized system administrators and technical support (under strict confidentiality agreements)</li>
+                                                        <li>Your name, birthdate, and selfie are retained only for as long as necessary to complete the validation process.</li>
+                                                        <li>After verification, your data will be securely stored following DSWD’s retention policies or disposed of in accordance with government rules on data disposal.</li>
                                                     </ul>
-                                                    <p class="mt-2 font-medium text-red-600">We DO NOT share your data with unauthorized third parties, commercial entities, or for marketing purposes.</p>
                                                 </div>
 
                                                 <!-- Data Security -->
                                                 <div class="mb-4">
-                                                    <h3 class="font-bold text-base text-[#2D318F] mb-2">5. DATA SECURITY MEASURES</h3>
+                                                    <h3 class="font-bold text-base text-[#2D318F] mb-2">5. YOUR RIGHTS AS A DATA SUBJECT</h3>
+                                                    <p class="mb-2">Under the Data Privacy Act, you have the right to:</p>
                                                     <ul class="list-disc pl-6 space-y-1 text-sm">
-                                                        <li>End-to-end encryption during data transmission and storage</li>
-                                                        <li>Multi-factor authentication and role-based access controls</li>
-                                                        <li>Regular security audits, monitoring, and vulnerability assessments</li>
-                                                        <li>Secure data centers with physical and digital safeguards</li>
-                                                        <li>Data backup and disaster recovery procedures</li>
-                                                        <li>Employee training on data privacy and security protocols</li>
+                                                        <li><strong>Right to Be Informed</strong></li>
+                                                        <li><strong>Right of Access</strong></li>
+                                                        <li><strong>Right to Rectification</strong></li>
+                                                        <li><strong>Right to Erasure</strong></li>
+                                                        <li><strong>Right to Data Portability</strong></li>
+                                                        <li><strong>Right to Object</strong></li>
+                                                        <li><strong>Right to Withdraw Consent</strong></li>
                                                     </ul>
                                                 </div>
 
                                                 <!-- Your Rights -->
                                                 <div class="mb-4">
-                                                    <h3 class="font-bold text-base text-[#2D318F] mb-2">6. YOUR RIGHTS AS DATA SUBJECT</h3>
+                                                    <h3 class="font-bold text-base text-[#2D318F] mb-2">6. DATA PROTECTION MEASURES</h3>
+                                                    <p class="mb-2">We apply organizational, physical, and technical safeguards to protect your data, including:</p>
                                                     <ul class="list-disc pl-6 space-y-1 text-sm">
-                                                        <li><strong>Right to Be Informed:</strong> This privacy notice and information about processing</li>
-                                                        <li><strong>Right of Access:</strong> Request copies of your personal data held by DSWD</li>
-                                                        <li><strong>Right to Rectification:</strong> Request correction of inaccurate or incomplete data</li>
-                                                        <li><strong>Right to Erasure:</strong> Request deletion of data under certain conditions</li>
-                                                        <li><strong>Right to Data Portability:</strong> Request data in machine-readable format</li>
-                                                        <li><strong>Right to Object:</strong> Object to certain types of processing</li>
-                                                        <li><strong>Right to Withdraw Consent:</strong> Withdraw consent for optional data processing</li>
+                                                        <li>Encrypted transmission to PSA PhilSys API</li>
+                                                        <li>Role-based access controls for authorized personnel</li>
+                                                        <li>Secure system logs and monitoring</li>
                                                     </ul>
                                                 </div>
 
@@ -256,32 +239,17 @@
                                                 <div class="mb-4">
                                                     <h3 class="font-bold text-base text-[#2D318F] mb-2">7. CONTACT INFORMATION</h3>
                                                     <div class="bg-gray-50 p-3 rounded border">
-                                                        <p><strong>Data Protection Officer (DPO):</strong></p>
                                                         <p>
-                                                            Department of Social Welfare and Development<br />
-                                                            Batasan Pambansa Complex, Constitution Hills<br />
-                                                            Quezon City 1126, Philippines<br />
-                                                            <strong>Email:</strong> dpo@dswd.gov.ph<br />
-                                                            <strong>Phone:</strong> (02) 8931-8101 to 07<br />
-                                                            <strong>Website:</strong> www.dswd.gov.ph
+                                                            For questions, concerns, or complaints regarding your data, please contact our Compliance Officer for Privacy (COP) through <strong>cop.fo3@dswd.gov.ph</strong> or Data Protection Officer
+                                                            (DPO) via <strong>dpo@dswd.gov.ph</strong>.
                                                         </p>
+                                                        <p>You may also file a complaint with the National Privacy Commission at <strong>www.privacy.gov.ph</strong></p>
                                                     </div>
-                                                </div>
-
-                                                <!-- Data Retention -->
-                                                <div class="mb-4">
-                                                    <h3 class="font-bold text-base text-[#2D318F] mb-2">8. DATA RETENTION PERIOD</h3>
-                                                    <ul class="list-disc pl-6 space-y-1 text-sm">
-                                                        <li><strong>Biometric Data:</strong> Deleted immediately after successful verification unless required for ongoing service delivery</li>
-                                                        <li><strong>Transaction Records:</strong> Retained for 7 years or as required by applicable laws</li>
-                                                        <li><strong>Personal Information:</strong> Retained only as long as necessary for service delivery and legal compliance</li>
-                                                        <li><strong>System Logs:</strong> Retained for 1 year for security and audit purposes</li>
-                                                    </ul>
                                                 </div>
 
                                                 <!-- Consent -->
                                                 <div class="bg-yellow-50 p-4 rounded-lg border-l-4 border-yellow-400">
-                                                    <h3 class="font-bold text-base text-[#2D318F] mb-2">9. YOUR CONSENT</h3>
+                                                    <h3 class="font-bold text-base text-[#2D318F] mb-2">YOUR CONSENT</h3>
                                                     <p class="font-medium">
                                                         By checking the consent box below and proceeding with this kiosk, you acknowledge that you have read, understood, and agree to this Privacy Notice. You consent to the collection, use,
                                                         processing, and storage of your personal data as described above.
