@@ -9,7 +9,10 @@ class RecaptchaService {
     loadV3Script() {
         return new Promise((resolve, reject) => {
             if (this.isLoaded && typeof grecaptcha !== 'undefined') {
-                resolve();
+                // Even if already loaded, ensure grecaptcha is ready
+                grecaptcha.ready(() => {
+                    resolve();
+                });
                 return;
             }
 
@@ -18,9 +21,20 @@ class RecaptchaService {
             script.async = true;
 
             script.onload = () => {
-                this.isLoaded = true;
-                this.version = 'v3';
-                resolve();
+                // Wait for grecaptcha to be available and ready
+                const checkAndWait = () => {
+                    if (typeof grecaptcha !== 'undefined') {
+                        grecaptcha.ready(() => {
+                            this.isLoaded = true;
+                            this.version = 'v3';
+                            resolve();
+                        });
+                    } else {
+                        // If grecaptcha is not available yet, wait a bit more
+                        setTimeout(checkAndWait, 100);
+                    }
+                };
+                checkAndWait();
             };
 
             script.onerror = () => {
@@ -66,16 +80,34 @@ class RecaptchaService {
                 return;
             }
 
-            grecaptcha.ready(() => {
-                grecaptcha
-                    .execute(this.siteKey, { action })
-                    .then((token) => {
-                        resolve(token);
-                    })
-                    .catch((error) => {
-                        reject(new Error('reCAPTCHA v3 execution failed: ' + error.message));
-                    });
-            });
+            if (!this.siteKey) {
+                reject(new Error('reCAPTCHA site key not configured'));
+                return;
+            }
+
+            // Retry mechanism for "No reCAPTCHA clients exist" error
+            const attemptExecution = (retryCount = 0) => {
+                grecaptcha.ready(() => {
+                    grecaptcha
+                        .execute(this.siteKey, { action })
+                        .then((token) => {
+                            if (!token) {
+                                throw new Error('No token received from reCAPTCHA');
+                            }
+                            resolve(token);
+                        })
+                        .catch((error) => {
+                            // Retry up to 3 times for client initialization issues
+                            if (retryCount < 3 && error.message.includes('No reCAPTCHA clients exist')) {
+                                setTimeout(() => attemptExecution(retryCount + 1), 1000);
+                            } else {
+                                reject(new Error('reCAPTCHA v3 execution failed: ' + error.message));
+                            }
+                        });
+                });
+            };
+
+            attemptExecution();
         });
     }
 
