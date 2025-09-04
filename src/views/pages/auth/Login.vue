@@ -27,27 +27,14 @@ const rememberMFA = ref(false);
 const mfaLoading = ref(false);
 const currentEmpno = ref('');
 
-const recaptchaSiteKey = import.meta.env.VITE_SITE_KEY_RECAPTCHA;
-
 onMounted(async () => {
     try {
-        // Initialize reCAPTCHA v3 using service
-        await RecaptchaService.initialize('v3');
+        // Initialize reCAPTCHA v3
+        await RecaptchaService.initialize();
+        console.log('reCAPTCHA v3 initialized successfully');
     } catch (error) {
         console.error('Failed to initialize reCAPTCHA:', error);
     }
-
-    // v2 script loading
-    // const script = document.createElement('script');
-    // script.src = 'https://www.google.com/recaptcha/api.js';
-    // script.async = true;
-    // script.defer = true;
-    // document.head.appendChild(script);
-
-    // // Make reCAPTCHA callback available globally
-    // window.onRecaptchaCallback = (response) => {
-    //     recaptchaResponse.value = response;
-    // };
 });
 
 function formatEmployeeId(value) {
@@ -66,38 +53,21 @@ function togglePasswordVisibility() {
     showPassword.value = !showPassword.value;
 }
 
-// Uncomment v3 executeRecaptcha function using service
+// Execute reCAPTCHA v3
 const executeRecaptcha = async () => {
     try {
+        console.log('Executing reCAPTCHA v3 with site key:', RecaptchaService.getSiteKey());
         return await RecaptchaService.execute('login');
     } catch (error) {
+        console.error('reCAPTCHA execution error:', error);
         throw new Error('reCAPTCHA verification failed: ' + error.message);
     }
 };
 
-// Comment out v3 executeRecaptcha function
-// const executeRecaptcha = () => {
-//     return new Promise((resolve, reject) => {
-//         if (typeof grecaptcha === 'undefined') {
-//             reject(new Error('reCAPTCHA not loaded'));
-//             return;
-//         }
-
-//         grecaptcha.ready(() => {
-//             grecaptcha
-//                 .execute(recaptchaSiteKey, { action: 'login' })
-//                 .then((token) => {
-//                     resolve(token);
-//                 })
-//                 .catch(reject);
-//         });
-//     });
-// };
-
 const login = async () => {
     loading.value = true;
     try {
-        // Get reCAPTCHA v3 token using service (uncommented)
+        // Get reCAPTCHA v3 token
         const recaptchaToken = await executeRecaptcha();
 
         // Encrypt password before sending to server
@@ -175,11 +145,6 @@ const login = async () => {
 const closeLoginErrorModal = () => {
     loginResultModal.value = false;
     password.value = '';
-    // Comment out v2 reset functionality
-    // if (typeof grecaptcha !== 'undefined') {
-    //     grecaptcha.reset();
-    //     recaptchaResponse.value = '';
-    // }
 };
 
 const redirectToERM = () => {
@@ -418,11 +383,6 @@ const copySecretKey = () => {
                                     <i :class="showPassword ? 'pi pi-eye-slash' : 'pi pi-eye'" style="font-size: 0.8rem"></i>
                                 </button>
                             </div>
-
-                            <!-- Comment out reCAPTCHA v2 widget -->
-                            <!-- <div class="flex justify-center my-4">
-                                <div class="g-recaptcha" :data-sitekey="recaptchaSiteKey" data-callback="onRecaptchaCallback"></div>
-                            </div> -->
 
                             <Button :loading="loading" @click="login" label="Sign In" class="w-full mb-4"></Button>
                             <div class="text-center">
