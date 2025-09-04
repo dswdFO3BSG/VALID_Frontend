@@ -61,6 +61,11 @@ const routes = [
                 path: '/settings/audit-trail',
                 name: 'audit-trail',
                 component: () => import('@/views/pages/settings/AuditTrail/AuditTrail.vue')
+            },
+            {
+                path: '/settings/user-modules',
+                name: 'user-modules',
+                component: () => import('@/views/pages/usermodules/UserModules.vue')
             }
         ]
     }
