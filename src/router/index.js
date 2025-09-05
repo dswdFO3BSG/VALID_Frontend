@@ -66,6 +66,11 @@ const routes = [
                 path: '/settings/user-modules',
                 name: 'user-modules',
                 component: () => import('@/views/pages/usermodules/UserModules.vue')
+            },
+            {
+                path: '/settings/mfa-management',
+                name: 'mfa-management',
+                component: () => import('@/views/pages/mfa/MfaManagement.vue')
             }
         ]
     }

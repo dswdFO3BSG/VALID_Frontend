@@ -216,7 +216,9 @@ const actionOptions = ref([
     { label: 'Login Failed', value: 'LOGIN_FAILED' },
     { label: 'Logout', value: 'LOGOUT' },
     { label: 'MFA Setup', value: 'MFA_SETUP' },
-    { label: 'MFA Verify', value: 'MFA_VERIFY' }
+    { label: 'MFA Verify', value: 'MFA_VERIFY' },
+    { label: 'MFA Verify Failed', value: 'MFA_VERIFY_FAILED' },
+    { label: 'MFA Reset', value: 'MFA_RESET' }
 ]);
 
 // Methods
@@ -342,11 +344,13 @@ const getActionSeverity = (action) => {
         CREATE: 'success',
         UPDATE: 'warn',
         DELETE: 'danger',
-        LOGIN_SUCCESS: 'info',
+        LOGIN_SUCCESS: 'success',
         LOGIN_FAILED: 'danger',
         LOGOUT: 'secondary',
         MFA_SETUP: 'info',
-        MFA_VERIFY: 'success'
+        MFA_VERIFY: 'success',
+        MFA_VERIFY_FAILED: 'danger',
+        MFA_RESET: 'warn'
     };
     return severityMap[action] || 'secondary';
 };
